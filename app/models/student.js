@@ -12,7 +12,7 @@ class Student{
     this.password = obj.password;
   }
 
-  login(fn){
+  register(fn){
 
     students.findOne({email: this.email}, (err, student)=>{
       if(student){

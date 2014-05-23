@@ -8,12 +8,17 @@ exports.index = (req, res)=>{
   res.render('home/index', {title: 'Node.js: Home'});
 };
 
+exports.showRegister = (req, res)=>{
+  console.log('MADE IT TO NODE--------');
+  res.render('home/register', {title: 'StudyBuddy: Register'});
+};
+
 exports.register = (req, res)=>{
 
   if(req.body.type === 'teacher'){
 
     var teacher = new Teacher(req.body);
-    teacher.login(t=>{
+    teacher.register(t=>{
       if(t){
         req.session.teacherId = t._id;
       } else {
@@ -26,7 +31,7 @@ exports.register = (req, res)=>{
   } else {
 
     var student = new Student(req.body);
-    student.login(s=>{
+    student.register(s=>{
       if(s){
         req.session.studentId = s._id;
       } else {
