@@ -1,7 +1,7 @@
 'use strict';
 
-// var traceur = require('traceur');
-// var Student = traceur.require(__dirname + '/../models/student.js');
+var traceur = require('traceur');
+var Student = traceur.require(__dirname + '/../models/student.js');
 
 exports.index = (req, res)=>{
   res.render('home/index', {title: 'Node.js: Home'});
@@ -12,15 +12,18 @@ exports.new = (req, res)=>{
 };
 
 exports.login = (req, res)=>{
+  req.session = null;
 
-    // student.login(s=>{
-    //   if(s){
-    //     req.session.teacherId = s._id;
-    //   } else {
-    //     req.session.teacherId = null;
-    //   }
-    //   res.send('STUDENT LOGGED IN!');
-    //   //res.render('teachers/dashboard');
-    // });
-
+  Student.findByEmail(req.body.email, student=>{
+    student.login(req.body.password, s=>{
+      if(s){
+        req.session.studentId = s._id;
+        res.send('STUDENT LOGGED IN!');
+      } else {
+        req.session.studentId = null;
+        res.send('STUDENT NOT LOGGED IN!');
+      }
+      //res.render('teachers/dashboard');
+    });
+  });
 };

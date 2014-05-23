@@ -40,7 +40,9 @@ class Teacher{
 
   login(fn){
     teachers.findOne({email: this.email}, (err, teacher)=>{
+
       var isMatch = bcrypt.compareSync(this.password, teacher.password);
+
       if(isMatch){
         fn(teacher);
       } else {

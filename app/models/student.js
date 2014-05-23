@@ -31,6 +31,20 @@ class Student{
     });
   }
 
+  login(pw, fn){
+    students.findOne({email: this.email}, (err, student)=>{
+
+      var isMatch = bcrypt.compareSync(pw, student.password);
+
+      if(isMatch){
+        fn(student);
+      } else {
+        fn(null);
+      }
+    });
+  }
+
+
 }
 
 module.exports = Student;
