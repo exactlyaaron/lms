@@ -29,6 +29,9 @@ function load(app, fn){
   app.get('/teacher/login', dbg, teachers.new);
   app.post('/teacher/login', dbg, teachers.login);
 
+  app.get('/teacher/dashboard', dbg, teachers.dashboard);
+  app.get('/student/dashboard', dbg, students.dashboard);
+
   console.log('Routes Loaded');
   fn();
 }

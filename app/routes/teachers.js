@@ -13,17 +13,23 @@ exports.new = (req, res)=>{
 };
 
 exports.login = (req, res)=>{
-  req.session = null;
 
-    teacher = new Teacher(req.body);
+    var teacher = new Teacher(req.body);
     teacher.login(t=>{
       if(t){
         req.session.teacherId = t._id;
-        res.send('TEACHER LOGGED IN!');
+        req.session.studentId = null;
+        res.redirect('/teacher/dashboard');
       } else {
-        req.session.teacherId = null;
         res.send('TEACHER NOT LOGGED IN!');
       }
       //res.render('teachers/dashboard');
     });
+};
+
+
+exports.dashboard = (req, res)=>{
+  Teacher.findById(req.session.teacherId, teacher=>{
+    res.render('teachers/dashboard', {teacher: teacher, title: 'StudyBuddy: Teacher Dash'});
+  });
 };

@@ -1,9 +1,9 @@
 'use strict';
 
 var teachers = global.nss.db.collection('teachers');
-//var Mongo = require('mongodb');
+var Mongo = require('mongodb');
 var bcrypt = require('bcrypt');
-var _ = require('lodash');
+//var _ = require('lodash');
 // var async = require('async');
 
 class Teacher{
@@ -13,9 +13,12 @@ class Teacher{
     this.password = obj.password;
   }
 
-  static findByEmail(email, fn){
-    teachers.findOne({email: email}, (err, teacher)=>{
-      teacher = _.create(Teacher.prototype, teacher);
+  static findById(id, fn){
+    id = Mongo.ObjectID(id);
+    teachers.findOne({_id: id}, (err, teacher)=>{
+      console.log('--------------------');
+      console.log(teacher);
+      console.log('--------------------');
       fn(teacher);
     });
   }
@@ -40,9 +43,7 @@ class Teacher{
 
   login(fn){
     teachers.findOne({email: this.email}, (err, teacher)=>{
-
       var isMatch = bcrypt.compareSync(this.password, teacher.password);
-
       if(isMatch){
         fn(teacher);
       } else {

@@ -1,7 +1,8 @@
 'use strict';
 
 var students = global.nss.db.collection('students');
-//var Mongo = require('mongodb');
+var Mongo = require('mongodb');
+//var _ = require('lodash');
 var bcrypt = require('bcrypt');
 // var async = require('async');
 
@@ -10,6 +11,16 @@ class Student{
     this.name= obj.name;
     this.email = obj.email;
     this.password = obj.password;
+  }
+
+  static findById(id, fn){
+    id = Mongo.ObjectID(id);
+    students.findOne({_id: id}, (err, student)=>{
+      console.log('--------------------');
+      console.log(student);
+      console.log('--------------------');
+      fn(student);
+    });
   }
 
   register(fn){
@@ -31,11 +42,9 @@ class Student{
     });
   }
 
-  login(pw, fn){
+  login(fn){
     students.findOne({email: this.email}, (err, student)=>{
-
-      var isMatch = bcrypt.compareSync(pw, student.password);
-
+      var isMatch = bcrypt.compareSync(this.password, student.password);
       if(isMatch){
         fn(student);
       } else {

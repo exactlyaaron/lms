@@ -12,18 +12,22 @@ exports.new = (req, res)=>{
 };
 
 exports.login = (req, res)=>{
-  req.session = null;
 
-  Student.findByEmail(req.body.email, student=>{
-    student.login(req.body.password, s=>{
-      if(s){
-        req.session.studentId = s._id;
-        res.send('STUDENT LOGGED IN!');
-      } else {
-        req.session.studentId = null;
-        res.send('STUDENT NOT LOGGED IN!');
-      }
-      //res.render('teachers/dashboard');
-    });
+  var student = new Student(req.body);
+  student.login(s=>{
+    if(s){
+      req.session.studentId = s._id;
+      req.session.teacherId = null;
+      res.redirect('/student/dashboard');
+    } else {
+      res.send('STUDENT NOT LOGGED IN!');
+    }
+    //res.render('teachers/dashboard');
+  });
+};
+
+exports.dashboard = (req, res)=>{
+  Student.findById(req.session.studentId, student=>{
+    res.render('students/dashboard', {student: student, title: 'StudyBuddy: Student Dash'});
   });
 };

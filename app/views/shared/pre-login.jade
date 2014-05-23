@@ -7,20 +7,6 @@ html
     link(href='/css/buttons.css', rel='stylesheet')
     link(href='/less/app.css', rel='stylesheet')
   body
-    header
-      #header-content
-        #logo
-          img(src='/img/logo.png')
-        a(href='#') COURSES]
-
-        #user
-          a#logout(href='/') Logout
-          #username
-            if(teacher)
-              p#user= teacher.name
-            if(student)
-              p#user= student.name
-              
     block content
 
     script(src='/js/vendor/jquery-2.1.1.js')
