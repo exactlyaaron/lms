@@ -1,5 +1,10 @@
-extends ../shared/template
+extends ../shared/pre-login
+
 
 block content
-  h1 Node.js Template
-  a.button.button-3d-highlight.button-circle(href='/help') Help
+  #logo
+
+
+  a.index#student-login(href='/student/login') Login As Student
+  a.index#teacher-login(href='/teacher/login') Login As Teacher
+  a.index(href='/register') Register

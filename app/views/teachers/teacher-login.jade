@@ -1,0 +1,10 @@
+extends ../shared/pre-login
+
+block content
+  form#form-login-teacher(action='/teacher/login', method='post')
+    input(type='email', name='email', placeholder='Email Address')
+    input(type='password', name='password', placeholder='Password')
+    button#login Submit/Login
+
+
+    a.back(href='/') Back

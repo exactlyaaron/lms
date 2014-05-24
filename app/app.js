@@ -30,7 +30,7 @@ app.use(cookieSession({keys:['SEC123', '321CES']}));
 
 /* --- http server      */
 var server = require('http').createServer(app);
-server.listen(port, function(){
+server.listen(port, '127.0.0.1',  function(){
   console.log('Node server listening. Port: ' + port + ', Database: ' + dbname);
 });
 

@@ -1,0 +1,9 @@
+extends ../shared/pre-login
+
+block content
+  form#form-login-student(action='/student/login', method='post')
+    input(type='email', name='email', placeholder='Email Address')
+    input(type='password', name='password', placeholder='Password')
+    button#login Submit/Login
+
+    a.back(href='/') Back
