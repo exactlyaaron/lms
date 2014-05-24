@@ -1,11 +1,5 @@
-doctype html
-html
-  head
-    title Quill Editor Demo
-    link(rel='stylesheet', type='text/css', href='../css/quill.snow.css')
-
-    meta(charset='utf-8')
-
+extends ../shared/template
+block content
   button#add-lesson Add Lesson
 
   body
@@ -68,5 +62,3 @@ html
       editor.on('text-change', function(delta, source) {
         console.log('text-change', delta, source)
       });
-
-script(src='/js/es6/compiled/main.js')

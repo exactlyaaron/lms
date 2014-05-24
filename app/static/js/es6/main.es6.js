@@ -2,17 +2,18 @@
   'use strict';
 
 
+  $(document).ready(init);
 
-
+  function init(){
     alert('bkyug');
   $('body').on('click', '#add-lesson', addLesson);
 
-
+}
 
 
   function addLesson(){
-    alert('kygyl');
-    var item = $('#content-container > .lesson:last-child');
+
+    var item = $('#content-container > #editor-wrapper > #formatting-container:last-child');
     $('#content-container').append(item.clone());
   }
 
