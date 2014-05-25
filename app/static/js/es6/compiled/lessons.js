@@ -20,6 +20,7 @@
       content: content
     }, (function(html) {
       console.log(html);
+      $('#full-editor').empty();
       $('input#title').val('');
       $('#description').val('');
       loadEditor();

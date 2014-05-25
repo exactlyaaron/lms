@@ -28,9 +28,12 @@
     console.log(description);
     ajax(`/course/${courseId}/addLesson`, 'post', {title:title, description: description, content: content}, html=>{
       console.log(html);
+      // location.reload();
+      // $( '#full-editor' ).load( 'ajax/new.jade #full-editor' );
+      $('#full-editor').empty();
       $('input#title').val('');
       $('#description').val('');
-      
+
       loadEditor();
 
     });

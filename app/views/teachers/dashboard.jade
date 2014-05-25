@@ -14,10 +14,9 @@ block content
       button#save-new-course Save Course
 
   each course in courses
-    h2= course.title
+    h3= course.title
     each lesson in course.material
       h3= lesson.title
-      h3= lesson.content
 
 block scripts
   script(src='/js/es6/compiled/courses.js')
