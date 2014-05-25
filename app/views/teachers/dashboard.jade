@@ -4,5 +4,13 @@ block content
   h1 Teacher Dashboard
   h3= teacher.name
 
-  form(action='/course/new', method='get')
-    button#newcourse Create a Course
+  button#newcourse Create a Course
+
+  #create-course-form
+    form(action='/course/new',method='post')
+      input(type='text', name='title', placeholder='Course Title')
+      input(type='text', name='description', placeholder='Course Description')
+      button#save-new-course Save Course
+
+block scripts
+  script(src='/js/es6/compiled/courses.js')

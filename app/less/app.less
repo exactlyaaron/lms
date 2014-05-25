@@ -1,3 +1,5 @@
+@main-color: #faaf40;
+
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700);
 
 body {
@@ -50,7 +52,7 @@ header {
     padding: 20px 20px;
     font-size: 20px;
     color: #fff;
-    background-color: #faaf40;
+    background-color: @main-color;
     display:block;
     width: 70%;
     min-width: 220px;
@@ -61,7 +63,7 @@ header {
 
   a.index-link:hover {
     background-color:#333;
-    color:#faaf40;
+    color:@main-color;
   }
 
 
@@ -71,10 +73,15 @@ header {
   width: 80%;
   margin: 0 auto;
   padding-top:20px;
+  padding-bottom: 150px;
 
   button#addlesson {
     margin-bottom: 15px;
   }
+}
+
+#lessons {
+  display:none;
 }
 
 .lesson-builder {
@@ -83,8 +90,18 @@ header {
 
 .quill-wrapper {
   border:1px solid #ccc;
+  margin-top: 10px;
 
   #full-toolbar {
     border-bottom: 1px solid #ccc;
   }
+
+  #full-editor {
+    height: 300px;
+  }
+}
+
+#create-course-form {
+  height: 200px;
+  background-color: @main-color;
 }
