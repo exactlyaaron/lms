@@ -1,3 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700);
+
+body {
+  background-color:#fbfbfb;
+  color:#444;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 .inline {
   display:inline-block;
 }
@@ -10,7 +18,7 @@
 header {
   width: 100%;
   margin: 0;
-  padding: 20px;
+  padding: 20px 0;
   border-bottom: 1px solid #ccc;
 
   #header-content {
@@ -21,9 +29,62 @@ header {
       display:inline-block;
 
       img {
-        width: 250px;
+        width: 200px;
         height: auto;
       }
     }
+  }
+}
+
+#pre-login-container {
+  width: 80%;
+  margin: 0 auto;
+  padding-top:20px;
+  text-align:center;
+
+  #home-logo img {
+    max-width: 450px;
+  }
+
+  a.index-link {
+    padding: 20px 20px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #faaf40;
+    display:block;
+    width: 70%;
+    min-width: 220px;
+    max-width: 450px;
+    margin: 10px auto;
+    text-decoration:none;
+  }
+
+  a.index-link:hover {
+    background-color:#333;
+    color:#faaf40;
+  }
+
+
+}
+
+#container {
+  width: 80%;
+  margin: 0 auto;
+  padding-top:20px;
+
+  button#addlesson {
+    margin-bottom: 15px;
+  }
+}
+
+.lesson-builder {
+  margin-bottom: 20px;
+}
+
+.quill-wrapper {
+  border:1px solid #ccc;
+
+  #full-toolbar {
+    border-bottom: 1px solid #ccc;
   }
 }
