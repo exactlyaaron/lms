@@ -33,7 +33,8 @@ function load(app, fn){
   app.get('/teacher/dashboard', dbg, teachers.dashboard);
   app.get('/student/dashboard', dbg, students.dashboard);
 
-  app.get('/course/new', dbg, courses.new);
+  app.post('/course/new', dbg, courses.new);
+  app.post('/course/:courseid/addlesson', courses.addLesson);
 
   console.log('Routes Loaded');
   fn();

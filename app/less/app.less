@@ -1,3 +1,5 @@
+@main-color: #faaf40;
+
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700);
 
 body {
@@ -50,7 +52,7 @@ header {
     padding: 20px 20px;
     font-size: 20px;
     color: #fff;
-    background-color: #faaf40;
+    background-color: @main-color;
     display:block;
     width: 70%;
     min-width: 220px;
@@ -87,4 +89,10 @@ header {
   #full-toolbar {
     border-bottom: 1px solid #ccc;
   }
+}
+
+#create-course-form {
+  height: 200px;
+  background-color: @main-color;
+
 }

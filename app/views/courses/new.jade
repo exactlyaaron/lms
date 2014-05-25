@@ -1,16 +1,23 @@
 extends ../shared/template
 
 block content
-  script(src='/js/vendor/quill.js')
   #container
-    button#addlesson Add Lesson
+    #course(data-id='#{course._id}')
+      h2#title= course.title
+      p#descriptio= course.description
+
+    button#add-lesson Add Lesson
+    button#add-test Add Test
+
+
 
     .clear
 
     #lessons
       .lesson-builder
-        input(type='text', name='title', placeholder='Lesson Title')
-        input(type='text', name='description', placeholder='Lesson Description')
+
+        input#title(type='text', name='title', placeholder='Lesson Title')
+        input#description(type='text', name='description', placeholder='Lesson Description')
         .quill-wrapper
           #full-toolbar.toolbar.sc-toolbar-container
             span.sc-format-group
@@ -68,21 +75,14 @@ block content
               span.sc-format-separator
               span.sc-format-button.sc-clear(title='Clear Formats') Clear
           #full-editor.editor.sc-container
+        button#save-lesson Save Lesson
 
+block scripts
     script(src='/js/es6/compiled/courses.js')
+    script(src='/js/vendor/quill.js')
     script(type='text/javascript').
       // Initialize editor with custom theme and modules
-      var fullEditor = new Quill('#full-editor', {
-        modules: {
-          'authorship': { enabled: true },
-          'multi-cursor': true,
-          'toolbar': { container: '#full-toolbar' },
-          'image-tooltip': true,
-          'link-tooltip': true
-        },
-        theme: 'snow'
-      });
-
+    
 
 
       //- // Add basic editor's author
