@@ -20,10 +20,9 @@
       content: content
     }, (function(html) {
       console.log(html);
-      $('#full-editor').empty();
       $('input#title').val('');
       $('#description').val('');
-      loadEditor();
+      fullEditor.deleteText(0, 1000);
     }));
   }
   function showLesson() {
@@ -33,7 +32,6 @@
   function loadEditor() {
     fullEditor = new Quill('#full-editor', {
       modules: {
-        'authorship': {enabled: true},
         'multi-cursor': true,
         'toolbar': {container: '#full-toolbar'},
         'image-tooltip': true,

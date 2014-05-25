@@ -29,12 +29,11 @@
     ajax(`/course/${courseId}/addLesson`, 'post', {title:title, description: description, content: content}, html=>{
       console.log(html);
       // location.reload();
-      // $( '#full-editor' ).load( 'ajax/new.jade #full-editor' );
-      $('#full-editor').empty();
+
       $('input#title').val('');
       $('#description').val('');
-
-      loadEditor();
+      fullEditor.deleteText(0, 1000);
+      // loadEditor();
 
     });
 
@@ -50,7 +49,6 @@
 
     fullEditor = new Quill('#full-editor', {
       modules: {
-        'authorship': { enabled: true },
         'multi-cursor': true,
         'toolbar': { container: '#full-toolbar' },
         'image-tooltip': true,
