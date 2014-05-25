@@ -144,7 +144,8 @@ header {
 	left: 0;
 	z-index: 1000;
 	opacity: 0;
-	background: rgba(143,27,15,0.8);
+	background: @main-color;
+  opacity: 0.4;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
@@ -159,10 +160,14 @@ header {
 /* Content styles */
 .md-content {
 	color: #fff;
-	background: #e74c3c;
+	background: @main-color;
 	position: relative;
 	border-radius: 3px;
 	margin: 0 auto;
+
+  input {
+    color: #333;
+  }
 }
 
 .md-content h3 {

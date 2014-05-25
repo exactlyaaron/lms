@@ -10,10 +10,42 @@ class Course{
     this.title= obj.title;
     this.description = obj.description;
     this.material = [];
+    this.test = [];
   }
 
   save(fn){
     courses.save(this, ()=>fn());
+  }
+
+  addTest(data, fn){
+    var problems = [];
+    var wrongAnswersArray = [];
+
+    for(var j = 0; j< data.wronganswer.length; j+=3){
+      var wrongAnswers = [];
+      wrongAnswers = data.wronganswer.slice(j, j+3);
+      wrongAnswersArray.push(wrongAnswers);
+    }
+
+
+    for(var i = 0; i<data.question.length; i++){
+
+      var problem = {};
+      problem.question = data.question[i];
+      problem.solution = data.solution[i];
+      problem.wronganswers = [];
+
+      problem.wronganswers = wrongAnswersArray[i];
+
+      problems.push(problem);
+
+    }
+
+    this.test = problems;
+
+    console.log('course test***********');
+    console.log(this.test);
+    fn();
   }
 
   addLesson(data, fn){

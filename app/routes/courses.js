@@ -20,3 +20,17 @@ exports.addLesson = (req, res)=>{
     });
   });
 };
+
+exports.newTest = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    res.render('courses/test-builder', {course:course});
+  });
+};
+
+exports.addTest = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    course.addTest(req.body, ()=>{
+      
+    });
+  });
+};
