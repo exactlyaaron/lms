@@ -16,6 +16,11 @@ exports.new = (req, res)=>{
 
 exports.addLesson = (req, res)=>{
 Course.findById(req.params.courseid, course=>{
-    course.addLesson(req.body);
+    course.addLesson(req.body, ()=>{
+      course.save(()=>{
+        console.log(course);
+        res.render('courses/new', {course: course});
+      });
+    });
   });
 };

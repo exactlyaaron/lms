@@ -10,6 +10,7 @@ class Course{
   constructor(obj){
     this.title = obj.title;
     this.description = obj.description;
+    this.material = [];
   }
 
   save(fn){
@@ -17,9 +18,13 @@ class Course{
 
   }
 
-  addLesson(course){
-    console.log(course);
-    console.log('made it!!!!!');
+  addLesson(data, fn){
+    var lesson = {};
+    lesson.title = data.title;
+    lesson.description = data.description;
+    lesson.content = data.content;
+    this.material.push(lesson);
+    fn();
   }
 
 
@@ -30,6 +35,13 @@ class Course{
       fn(course);
     });
   }
+
+  static findAll(fn){
+    courses.find().toArray((err, courses)=>{
+      fn(courses);
+    });
+  }
+
 
 }
 
