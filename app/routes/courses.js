@@ -9,3 +9,14 @@ exports.new = (req, res)=>{
     res.render('courses/new', {course: course});
   });
 };
+
+exports.addLesson = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    course.addLesson(req.body, ()=>{
+      course.save(()=>{
+        console.log(course);
+        res.render('courses/lesson-list', {course:course});
+      });
+    });
+  });
+};

@@ -2,6 +2,7 @@
 
 var traceur = require('traceur');
 var Teacher = traceur.require(__dirname + '/../models/teacher.js');
+var Course = traceur.require(__dirname + '/../models/course.js');
 // var Student = traceur.require(__dirname + '/../models/student.js');
 
 exports.index = (req, res)=>{
@@ -29,7 +30,9 @@ exports.login = (req, res)=>{
 
 
 exports.dashboard = (req, res)=>{
-  Teacher.findById(req.session.teacherId, teacher=>{
-    res.render('teachers/dashboard', {teacher: teacher, title: 'StudyBuddy: Teacher Dash'});
+  Course.findAll(courses=>{
+    Teacher.findById(req.session.teacherId, teacher=>{
+      res.render('teachers/dashboard', {courses: courses, teacher: teacher, title: 'StudyBuddy: Teacher Dash'});
+    });
   });
 };

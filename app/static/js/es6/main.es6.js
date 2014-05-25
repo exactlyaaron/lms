@@ -1,11 +1,6 @@
-(function(){
+/* exported ajax */
+
+function ajax(url, type, data={}, success=r=>console.log(r), dataType='html'){
   'use strict';
-
-  $(document).ready(init);
-
-  function init(){
-
-  }
-
-
-})();
+  $.ajax({url:url, type:type, dataType:dataType, data:data, success:success});
+}
