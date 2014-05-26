@@ -1,0 +1,18 @@
+h3 IM BUILDIN A TEST
+
+button#addquestion Add Question
+
+form#test(action='/course/#{course._id}/addTest', method='post')
+  .question
+    textarea(name='question', placeholder='Type guestion here')
+    p Solution
+    input(type='text', name='solution', placeholder='Correct answer')
+    p Alternate Choices
+    input(type='text', name='wronganswer', placeholder='Alt Answer 1')
+    input(type='text', name='wronganswer', placeholder='Alt Answer 2')
+    input(type='text', name='wronganswer', placeholder='Alt Answer 3')
+
+button#savetest Save Test
+
+block scripts
+  script(src='/js/es6/compiled/lessons.js')

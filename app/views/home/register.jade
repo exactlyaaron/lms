@@ -1,0 +1,18 @@
+extends ../shared/pre-login
+
+block content
+  h1 Create Account
+
+  form#form-register(action='/register', method='post')
+    input(type='text', name='name', placeholder='Name')
+    input(type='email', name='email', placeholder='Email')
+    input(type='password', name='password', placeholder='Password')
+
+    input(type='radio', name='type', value='student')
+    | Student
+    input(type='radio', name='type', value='teacher')
+    | Teacher
+
+    .clear
+    button#register Create Account
+    a.back(href='#') Back

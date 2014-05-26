@@ -7,7 +7,36 @@ html
     link(href='/css/buttons.css', rel='stylesheet')
     link(href='/less/app.css', rel='stylesheet')
   body
-    block content
+    header
+      #header-content
+        #logo
+          if(teacher)
+            a(href='/teacher/dashboard')
+              img(src='/img/logo.svg')
+          if(student)
+            a(href='/student/dashboard')
+              img(src='/img/logo.svg')
+
+        if(teacher)
+          a(href='/teacher/dashboard') DASHBOARD
+        if(student)
+          a(href='/student/dashboard') DASHBOARD
+
+        if(teacher)
+          a(href='/teacher/courses/all') COURSES
+        if(student)
+          a(href='/student/courses/all') COURSES
+
+        #user
+          a#logout(href='#') Logout
+          #username
+            if(teacher)
+              p#user= teacher.name
+            if(student)
+              p#user= student.name
+
+    #container
+      block content
 
     script(src='/js/vendor/jquery-2.1.1.js')
     script(src='/js/vendor/lodash-2.4.1.js')

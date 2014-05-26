@@ -1,0 +1,10 @@
+extends ../shared/template
+
+block content
+  h1 Student Dashboard
+  h3= student.name
+
+  if(student.completedCourses)
+    each course in student.completedCourses
+      h3= course.title
+      h4= course.description
