@@ -26,7 +26,7 @@
     var courseId = $('#course').attr('data-id');
     ajax(`/course/${courseId}/newTest`, 'get', null, html=>{
       console.log(html);
-      $('#builder').empty().append(html);
+      $('#builder').append(html);
     });
   }
 

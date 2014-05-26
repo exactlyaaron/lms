@@ -39,6 +39,10 @@ function load(app, fn){
   app.get('/course/:courseId/newTest', dbg, courses.newTest);
   app.post('/course/:courseId/addTest', dbg, courses.addTest);
 
+  app.get('/course/:courseId/show', dbg, courses.show);
+  app.get('/course/:courseId/test', dbg, courses.showTest);
+  app.post('/course/:courseId/test', dbg, courses.gradeTest);
+
   console.log('Routes Loaded');
   fn();
 }

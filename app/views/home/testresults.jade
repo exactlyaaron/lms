@@ -1,0 +1,15 @@
+extends ../shared/template
+
+block content
+  if(results.grade > 60)
+    h2 Congratulations! You Passed #{course.title}
+
+  h1 #{results.grade}%
+  h3 Correct: #{results.numRight}
+  h3 Wrong: #{results.numWrong}
+
+  button#dashboard Back to Dashboard
+  .clear
+  if(results.grade < 60)
+    form(action='/course/#{course._id}/test', method='get')
+      button#retake Retake Test

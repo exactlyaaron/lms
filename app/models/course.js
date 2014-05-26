@@ -1,3 +1,6 @@
+/* jshint sub:true */
+/* jshint unused:false */
+
 'use strict';
 
 var courses = global.nss.db.collection('courses');
@@ -20,31 +23,36 @@ class Course{
   addTest(data, fn){
     var problems = [];
     var wrongAnswersArray = [];
+    var wrongChoicesArray = [];
 
     for(var j = 0; j< data.wronganswer.length; j+=3){
       var wrongAnswers = [];
       wrongAnswers = data.wronganswer.slice(j, j+3);
       wrongAnswersArray.push(wrongAnswers);
+      wrongChoicesArray.push(wrongAnswers);
     }
-
 
     for(var i = 0; i<data.question.length; i++){
 
       var problem = {};
       problem.question = data.question[i];
       problem.solution = data.solution[i];
-      problem.wronganswers = [];
 
+      problem.wronganswers = [];
       problem.wronganswers = wrongAnswersArray[i];
 
-      problems.push(problem);
+      problem.choices = [];
+      problem.choices = wrongChoicesArray[i];
+      problem.choices.push(data.solution[i]);
+      problem.choices = _(problem.choices).shuffle();
+      problem.choices = problem.choices.value();
 
+      problems.push(problem);
     }
 
-    this.test = problems;
 
-    console.log('course test***********');
-    console.log(this.test);
+
+    this.test = problems;
     fn();
   }
 
@@ -56,6 +64,35 @@ class Course{
 
     this.material.push(lesson);
     fn();
+  }
+
+  gradeTest(data, fn){
+
+    var numRight = 0;
+    var numWrong = 0;
+
+    for(var i=0; i<this.test.length; i++){
+      var question = this.test[i].question;
+
+      if(data[`${question}`] === this.test[i].solution){
+        console.log('WINNING');
+        numRight++;
+      } else {
+        console.log('LOSING');
+        numWrong++;
+      }
+    }
+
+    var total = numRight + numWrong;
+    var grade = (numRight / total) * 100;
+    grade = Math.round(grade);
+
+    var results = {};
+    results.numRight = numRight;
+    results.numWrong = numWrong;
+    results.grade = grade;
+
+    fn(results);
   }
 
   static findById(courseId, fn){

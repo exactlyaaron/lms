@@ -14,10 +14,10 @@ block content
       button#save-new-course Save Course
 
   each course in courses
-    h2= course.title
-    each lesson in course.material
-      h3= lesson.title
-      h3= lesson.content
+    .course(data-id='#{course._id}')
+      a.showcourse(href='/course/#{course._id}/show')
+        h2= course.title
+        p= course.description
 
 block scripts
   script(src='/js/es6/compiled/courses.js')

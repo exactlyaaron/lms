@@ -1,0 +1,15 @@
+extends ../shared/template
+
+block content
+  #course(data-id='#{course._id}')
+  h1= course.title
+
+  #content
+    each lesson in course.material
+      p= lesson.title
+      p!= lesson.content
+
+    a#taketest(href='/course/#{course._id}/test') Take Test
+
+block scripts
+  script(src='/js/es6/compiled/courses.js')
