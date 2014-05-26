@@ -3,6 +3,20 @@
 var traceur = require('traceur');
 var Course = traceur.require(__dirname + '/../models/course.js');
 var Student = traceur.require(__dirname + '/../models/student.js');
+var multiparty = require('multiparty');
+
+exports.avatar = (req, res)=>{
+  var form = new multiparty.Form();
+
+  Student.findById(req.session.studentId, student=>{
+    student.addAvatar(form, req, ()=>{
+      student.save(()=>{
+        res.render('students/dashboard', {student: student});
+      });
+    });
+  });
+};
+
 
 
 exports.show = (req, res)=>{

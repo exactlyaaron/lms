@@ -3,6 +3,7 @@
 var traceur = require('traceur');
 var Teacher = traceur.require(__dirname + '/../models/teacher.js');
 var Course = traceur.require(__dirname + '/../models/course.js');
+
 // var Student = traceur.require(__dirname + '/../models/student.js');
 
 exports.index = (req, res)=>{

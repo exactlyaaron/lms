@@ -24,17 +24,30 @@ html
 
         if(teacher)
           a(href='/teacher/courses/all') COURSES
+          form(method='POST', action='/teacher/dashboard', enctype='multipart/form-data')
+            input#teacher-avatar(type='file', name='avatar')
+            button Add Avatar
+
         if(student)
           a(href='/student/courses/all') COURSES
+          form(method='POST', action='/student/dashboard', enctype='multipart/form-data')
+            input#student-avatar(type='file', name='avatar')
+            button Add Avatar
+
+
 
         #user
           a#logout(href='#') Logout
           #username
             if(teacher)
               p#user= teacher.name
+              if(teacher.avatar.photo)
+                img.avatar(src='/img/#{teacher.name}/#{teacher.avatar.photo}')
+
             if(student)
               p#user= student.name
-
+              if(student.avatar.photo)
+                img.avatar(src='/img/#{student.name}/#{student.avatar.photo}')
     #container
       block content
 

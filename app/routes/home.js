@@ -19,8 +19,29 @@ exports.showRegister = (req, res)=>{
   res.render('home/register', {title: 'StudyBuddy: Register'});
 };
 
-exports.register = (req, res)=>{
+// exports.create = (req, res)=>{
+//   var form = new multiparty.Form();
+//   form.parse(req, (err, fields, files)=>{
+//
+//     if (!fs.existsSync(`${__dirname}/../static/img/${fields.name[0]}`)) {
+//       var album = {};
+//       album.name = fields.name[0];
+//
+//       files.coverArt.forEach(p=>{
+//         fs.mkdirSync(`${__dirname}/../static/img/${fields.name[0]}`);
+//         fs.renameSync(p.path, `${__dirname}/../static/img/${fields.name[0]}/${p.originalFilename}`);
+//         album.coverArt = (p.originalFilename);
+//     });
+//
+//     albums.save(album, ()=>res.redirect('/albums'));
+//     }else{
+//     res.redirect('/');
+//     }
+//   });
+//
+// };
 
+exports.register = (req, res)=>{
   if(req.body.type === 'teacher'){
 
     var teacher = new Teacher(req.body);
