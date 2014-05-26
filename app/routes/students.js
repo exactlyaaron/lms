@@ -20,9 +20,8 @@ exports.login = (req, res)=>{
       req.session.teacherId = null;
       res.redirect('/student/dashboard');
     } else {
-      res.send('STUDENT NOT LOGGED IN!');
+      res.redirect('/');
     }
-    //res.render('teachers/dashboard');
   });
 };
 

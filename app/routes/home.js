@@ -8,6 +8,12 @@ exports.index = (req, res)=>{
   res.render('home/index', {title: 'Node.js: Home'});
 };
 
+exports.logout = (req, res)=>{
+  console.log('MADE IT TO LOGOUT ROUTE');
+  req.session = null;
+  res.render('home/index', {title: 'Node.js: Home'});
+};
+
 exports.showRegister = (req, res)=>{
   console.log('MADE IT TO NODE--------');
   res.render('home/register', {title: 'StudyBuddy: Register'});
@@ -24,8 +30,7 @@ exports.register = (req, res)=>{
       } else {
         req.session.teacherId = null;
       }
-      res.send('TEACH REGISTERED IN!');
-      //res.render('teachers/dashboard');
+      res.redirect('/teacher/dashboard');
     });
 
   } else {
@@ -37,9 +42,7 @@ exports.register = (req, res)=>{
       } else {
         req.session.studentId = null;
       }
-
-      res.send('STUDENT REGISTERED IN!');
-      //res.render('students/dashboard');
+      res.redirect('/student/dashboard');
     });
   }
 

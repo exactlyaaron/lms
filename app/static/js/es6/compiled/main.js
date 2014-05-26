@@ -1,3 +1,16 @@
+(function() {
+  'use strict';
+  $(document).ready(init);
+  function init() {
+    $('#logout').click(logout);
+  }
+  function logout() {
+    ajax('/logout', 'get', null, (function(html) {
+      console.log(html);
+      document.location.replace('/');
+    }));
+  }
+})();
 function ajax(url, type) {
   'use strict';
   var data = arguments[2] !== (void 0) ? arguments[2] : {};

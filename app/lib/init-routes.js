@@ -17,7 +17,9 @@ function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
   var students = traceur.require(__dirname + '/../routes/students.js');
   var teachers = traceur.require(__dirname + '/../routes/teachers.js');
-  var courses = traceur.require(__dirname + '/../routes/courses.js');
+  var teacherCourses = traceur.require(__dirname + '/../routes/teacher-courses.js');
+  var studentCourses = traceur.require(__dirname + '/../routes/student-courses.js');
+
 
   app.get('/', dbg, home.index);
 
@@ -33,15 +35,25 @@ function load(app, fn){
   app.get('/teacher/dashboard', dbg, teachers.dashboard);
   app.get('/student/dashboard', dbg, students.dashboard);
 
-  app.post('/course/new', dbg, courses.new);
-  app.post('/course/:courseId/addLesson', dbg, courses.addLesson);
+  app.post('/course/new', dbg, teacherCourses.new);
+  app.post('/course/:courseId/addLesson', dbg, teacherCourses.addLesson);
 
-  app.get('/course/:courseId/newTest', dbg, courses.newTest);
-  app.post('/course/:courseId/addTest', dbg, courses.addTest);
+  app.get('/teacher/courses/all', dbg, teacherCourses.showAll);
+  app.get('/student/courses/all', dbg, studentCourses.showAll);
 
-  app.get('/course/:courseId/show', dbg, courses.show);
-  app.get('/course/:courseId/test', dbg, courses.showTest);
-  app.post('/course/:courseId/test', dbg, courses.gradeTest);
+  app.get('/course/:courseId/newTest', dbg, teacherCourses.newTest);
+  app.post('/course/:courseId/addTest', dbg, teacherCourses.addTest);
+
+  app.get('/course/:courseId/show', dbg, teacherCourses.show);
+  app.get('/student/course/:courseId/show', dbg, studentCourses.show);
+
+  app.get('/course/:courseId/test', dbg, teacherCourses.showTest);
+  app.get('/student/course/:courseId/test', dbg, studentCourses.showTest);
+
+  app.post('/course/:courseId/test', dbg, teacherCourses.gradeTest);
+  app.post('/student/course/:courseId/test', dbg, studentCourses.gradeTest);
+
+  app.get('/logout', dbg, home.logout);
 
   console.log('Routes Loaded');
   fn();

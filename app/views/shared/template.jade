@@ -10,9 +10,22 @@ html
     header
       #header-content
         #logo
-          a(href='/')
-            img(src='/img/logo.svg')
-        a(href='#') COURSES
+          if(teacher)
+            a(href='/teacher/dashboard')
+              img(src='/img/logo.svg')
+          if(student)
+            a(href='/student/dashboard')
+              img(src='/img/logo.svg')
+
+        if(teacher)
+          a(href='/teacher/dashboard') DASHBOARD
+        if(student)
+          a(href='/student/dashboard') DASHBOARD
+
+        if(teacher)
+          a(href='/teacher/courses/all') COURSES
+        if(student)
+          a(href='/student/courses/all') COURSES
 
         #user
           a#logout(href='#') Logout

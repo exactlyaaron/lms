@@ -9,7 +9,10 @@ block content
       p= lesson.title
       p!= lesson.content
 
-    a#taketest(href='/course/#{course._id}/test') Take Test
+    if(teacher)
+      a#taketest(href='/course/#{course._id}/test') Take Test
+    if(student)
+      a#taketest(href='/student/course/#{course._id}/test') Take Test
 
 block scripts
   script(src='/js/es6/compiled/courses.js')

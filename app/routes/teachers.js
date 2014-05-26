@@ -22,9 +22,8 @@ exports.login = (req, res)=>{
         req.session.studentId = null;
         res.redirect('/teacher/dashboard');
       } else {
-        res.send('TEACHER NOT LOGGED IN!');
+        res.redirect('/');
       }
-      //res.render('teachers/dashboard');
     });
 };
 

@@ -65,3 +65,11 @@ exports.gradeTest = (req, res)=>{
     });
   });
 };
+
+exports.showAll = (req, res)=>{
+  Course.findAll(courses=>{
+    Teacher.findById(req.session.teacherId, teacher=>{
+      res.render('courses/showall', {teacher:teacher, courses: courses});
+    });
+  });
+};

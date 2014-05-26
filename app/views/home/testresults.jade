@@ -4,12 +4,24 @@ block content
   if(results.grade > 60)
     h2 Congratulations! You Passed #{course.title}
 
+  if(results.grade < 60)
+    h2 YOU FAIL!
+
   h1 #{results.grade}%
   h3 Correct: #{results.numRight}
   h3 Wrong: #{results.numWrong}
 
-  button#dashboard Back to Dashboard
+  if(teacher)
+    a(href='/teacher/dashboard') DASHBOARD
+
+  if(student)
+    a(href='/student/dashboard') DASHBOARD
+
   .clear
   if(results.grade < 60)
-    form(action='/course/#{course._id}/test', method='get')
-      button#retake Retake Test
+    if(teacher)
+      form(action='/course/#{course._id}/test', method='get')
+        button#retake Retake Test
+    if(student)
+      form(action='/student/course/#{course._id}/test', method='get')
+        button#retake Retake Test

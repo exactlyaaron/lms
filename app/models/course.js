@@ -22,38 +22,56 @@ class Course{
 
   addTest(data, fn){
     var problems = [];
+    var problem = {};
     var wrongAnswersArray = [];
     var wrongChoicesArray = [];
 
-    for(var j = 0; j< data.wronganswer.length; j+=3){
-      var wrongAnswers = [];
-      wrongAnswers = data.wronganswer.slice(j, j+3);
-      wrongAnswersArray.push(wrongAnswers);
-      wrongChoicesArray.push(wrongAnswers);
-    }
+    if(!Array.isArray(data.question)){
 
-    for(var i = 0; i<data.question.length; i++){
+      problem = {};
 
-      var problem = {};
-      problem.question = data.question[i];
-      problem.solution = data.solution[i];
-
-      problem.wronganswers = [];
-      problem.wronganswers = wrongAnswersArray[i];
-
+      problem.question = data.question;
+      problem.solution = data.solution;
+      problem.wronganswers = data.wronganswer;
       problem.choices = [];
-      problem.choices = wrongChoicesArray[i];
-      problem.choices.push(data.solution[i]);
+      problem.choices = problem.wronganswers;
+      problem.choices.push(problem.solution);
       problem.choices = _(problem.choices).shuffle();
       problem.choices = problem.choices.value();
 
       problems.push(problem);
+
+    } else {
+
+      for(var j = 0; j< data.wronganswer.length; j+=3){
+        var wrongAnswers = [];
+        wrongAnswers = data.wronganswer.slice(j, j+3);
+        wrongAnswersArray.push(wrongAnswers);
+        wrongChoicesArray.push(wrongAnswers);
+      }
+
+      for(var i = 0; i<data.question.length; i++){
+
+        problem = {};
+        problem.question = data.question[i];
+        problem.solution = data.solution[i];
+
+        problem.wronganswers = [];
+        problem.wronganswers = wrongAnswersArray[i];
+
+        problem.choices = [];
+        problem.choices = wrongChoicesArray[i];
+        problem.choices.push(data.solution[i]);
+        problem.choices = _(problem.choices).shuffle();
+        problem.choices = problem.choices.value();
+
+        problems.push(problem);
+      }
     }
-
-
 
     this.test = problems;
     fn();
+
   }
 
   addLesson(data, fn){
@@ -77,7 +95,7 @@ class Course{
       if(data[`${question}`] === this.test[i].solution){
         console.log('WINNING');
         numRight++;
-      } else {
+      } else if(data[`${question}`] !== this.test[i].solution) {
         console.log('LOSING');
         numWrong++;
       }

@@ -2,7 +2,7 @@
 
 var students = global.nss.db.collection('students');
 var Mongo = require('mongodb');
-//var _ = require('lodash');
+var _ = require('lodash');
 var bcrypt = require('bcrypt');
 // var async = require('async');
 
@@ -11,16 +11,39 @@ class Student{
     this.name= obj.name;
     this.email = obj.email;
     this.password = obj.password;
+    this.completedCourses = [];
   }
 
   static findById(id, fn){
     id = Mongo.ObjectID(id);
     students.findOne({_id: id}, (err, student)=>{
-      console.log('--------------------');
-      console.log(student);
-      console.log('--------------------');
+      student = _.create(Student.prototype, student);
       fn(student);
     });
+  }
+
+  save(fn){
+    students.save(this, ()=>fn());
+  }
+
+  addCompletedCourse(course, results, fn){
+    var completedCourse = {};
+
+    // this.completedCourses.forEach(x=>{
+    //   if(x._id === course._id && x.results.grade > results.grade){
+    //
+    //   } else {
+    //
+    //   }
+    // });
+
+    completedCourse.id = course._id;
+    completedCourse.title = course.title;
+    completedCourse.description = course.description;
+    completedCourse.results = results;
+
+    this.completedCourses.push(completedCourse);
+    fn();
   }
 
   register(fn){
