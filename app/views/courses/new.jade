@@ -2,22 +2,22 @@ extends ../shared/template
 
 block content
     #course(data-id='#{course._id}')
-      h2= course.title
-      p= course.description
+      #title
+        button.md-trigger#addlesson(data-modal='modal-1') Add Lesson
+        button#addtest Add Test
 
-      p= course.material
+        h2= course.title
+        p= course.description
 
-      h3 Lessons
+        .clear
+
       #lesson-list
-
-    button.md-trigger#addlesson(data-modal='modal-1') Add Lesson
-    button#addtest Add Test
 
     .clear
     #builder
       #modal-1.md-modal.md-effect-1
         .md-content
-            h3 Modal Dialog
+            h3 Add a Lesson
 
             .lesson-builder
               input#title(type='text', name='title', placeholder='Lesson Title')

@@ -5,18 +5,18 @@ var Teacher = traceur.require(__dirname + '/../models/teacher.js');
 var Student = traceur.require(__dirname + '/../models/student.js');
 
 exports.index = (req, res)=>{
-  res.render('home/index', {title: 'Node.js: Home'});
+  res.render('home/index', {title: 'CodeBuddy: Home'});
 };
 
 exports.logout = (req, res)=>{
   console.log('MADE IT TO LOGOUT ROUTE');
   req.session = null;
-  res.render('home/index', {title: 'Node.js: Home'});
+  res.render('home/index', {title: 'CodeBuddy: Home'});
 };
 
 exports.showRegister = (req, res)=>{
   console.log('MADE IT TO NODE--------');
-  res.render('home/register', {title: 'StudyBuddy: Register'});
+  res.render('home/register', {title: 'CodeBuddy: Register'});
 };
 
 exports.register = (req, res)=>{

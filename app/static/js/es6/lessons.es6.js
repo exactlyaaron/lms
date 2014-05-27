@@ -16,10 +16,12 @@
 
   function showLessonForm(){
     $('#lessons').slideToggle();
+    $('#lesson-list').show();
   }
 
   function saveLesson(){
-    var title = $('#title').val();
+
+    var title = $('input#title').val();
     var description = $('#description').val();
     var courseId = $('#course').attr('data-id');
     var content = fullEditor.getHTML();

@@ -17,15 +17,21 @@ html
             a(href='/student/dashboard')
               img(src='/img/logo.svg')
 
-        if(teacher)
-          a(href='/teacher/dashboard') DASHBOARD
-        if(student)
-          a(href='/student/dashboard') DASHBOARD
+        #nav
+          ul
+            if(teacher)
+              li
+                a(href='/teacher/dashboard') DASHBOARD
+            if(student)
+              li
+                a(href='/student/dashboard') DASHBOARD
 
-        if(teacher)
-          a(href='/teacher/courses/all') COURSES
-        if(student)
-          a(href='/student/courses/all') COURSES
+            if(teacher)
+              li
+                a(href='/teacher/courses/all') COURSES
+            if(student)
+              li
+                a(href='/student/courses/all') COURSES
 
         #user
           a#logout(href='#') Logout
@@ -34,6 +40,7 @@ html
               p#user= teacher.name
             if(student)
               p#user= student.name
+        .clear
 
     #container
       block content

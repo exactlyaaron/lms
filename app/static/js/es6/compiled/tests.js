@@ -15,6 +15,7 @@
     $('#test').append(newQuestion);
   }
   function addTest() {
+    $('#lesson-list').hide();
     var courseId = $('#course').attr('data-id');
     ajax(("/course/" + courseId + "/newTest"), 'get', null, (function(html) {
       console.log(html);

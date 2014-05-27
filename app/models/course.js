@@ -75,6 +75,9 @@ class Course{
   }
 
   addLesson(data, fn){
+    console.log('**************');
+    console.log(data);
+
     var lesson = {};
     lesson.title = data.title;
     lesson.description = data.description;

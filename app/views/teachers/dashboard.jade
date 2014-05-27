@@ -1,23 +1,27 @@
 extends ../shared/template
 
 block content
-  h1 Teacher Dashboard
-  h3= teacher.name
+  #dash-title
+      h3.dash-title #{teacher.name} : Dashboard
 
 
-  button#newcourse Create a Course
+  #btn-newcourse
+    button#newcourse Create a Course
 
   #create-course-form
-    form(action='/course/new', method='post')
+    form#newcourse(action='/course/new', method='post')
       input(type='text', name='title', placeholder='Course Title')
       input(type='text', name='description', placeholder='Course Description')
       button#save-new-course Save Course
 
-  each course in courses
-    .course(data-id='#{course._id}')
-      a.showcourse(href='/course/#{course._id}/show')
-        h2= course.title
-        p= course.description
+  #courses
+    p Course Library
+    each course in courses
+      .course(data-id='#{course._id}')
+        a.showcourse(href='/course/#{course._id}/show')
+          h2= course.title
+          p.desc= course.description
+  .clear
 
 block scripts
   script(src='/js/es6/compiled/courses.js')

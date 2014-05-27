@@ -12,6 +12,7 @@ class Student{
     this.email = obj.email;
     this.password = obj.password;
     this.completedCourses = [];
+    this.avatar = obj.avatar;
   }
 
   static findById(id, fn){

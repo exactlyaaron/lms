@@ -6,7 +6,7 @@ block content
   if(teacher)
     form(action='/course/#{course._id}/test', method='post')
       each problem in course.test
-        p= problem.question
+        p.question= problem.question
         each choice in problem.choices
           input.choice(type='radio', name='#{problem.question}', value='#{choice}')
           | #{choice}
@@ -16,7 +16,7 @@ block content
   if(student)
     form(action='/student/course/#{course._id}/test', method='post')
       each problem in course.test
-        p= problem.question
+        p.question= problem.question
         each choice in problem.choices
           input.choice(type='radio', name='#{problem.question}', value='#{choice}')
           | #{choice}

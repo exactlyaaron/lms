@@ -8,6 +8,57 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+*:not(#create-course-form) {
+  -webkit-transition: all 0.3s; /* For Safari 3.1 to 6.0 */
+  transition: all 0.3s;
+}
+
+*:focus {
+  outline:none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+button {
+  margin-top:10px;
+  border: 3px solid @main-color;
+  background:none;
+  color:@main-color;
+  padding: 10px 20px;
+  margin-right:10px;
+}
+
+button:hover {
+  background-color: @main-color;
+  border: 3px solid @main-color;
+  color: #fff;
+}
+
+textarea {
+  width: 300px;
+  height: 150px;
+  border: 3px solid @main-color;
+  resize: none;
+}
+
+// ::-webkit-input-placeholder {
+//    color: @main-color;
+// }
+//
+// :-moz-placeholder { /* Firefox 18- */
+//    color: @main-colo;
+// }
+//
+// ::-moz-placeholder {  /* Firefox 19+ */
+//    color: @main-colo;
+// }
+//
+// :-ms-input-placeholder {
+//    color: @main-colo;
+// }
+
 .inline {
   display:inline-block;
 }
@@ -17,22 +68,25 @@ body {
   clear:both;
 }
 
-header {
-  width: 100%;
-  margin: 0;
-  padding: 20px 0;
-  border-bottom: 1px solid #ccc;
+.left {
+  float:left;
+  margin-right: 15px;
+}
+
+header.pre-login {
+  text-align:center;
+  padding:0;
 
   #header-content {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
+    text-align:center;
 
-    #logo {
-      display:inline-block;
+    #home-logo {
 
       img {
-        width: 200px;
-        height: auto;
+        width:75%;
+        height:auto;
+        max-width:350px;
       }
     }
   }
@@ -66,18 +120,324 @@ header {
     color:@main-color;
   }
 
+}
 
+#form-register, #student-login, #teacher-login {
+  text-align:center;
+  // background-color:#fff;
+  // padding:20px;
+  /* hide input */
+
+  input[type='text'], input[type='password'], input[type='email']{
+    display:block;
+    width: 60%;
+    min-width: 230px;
+    margin: 15px auto;
+    padding: 15px;
+    background-color: #fbfbfb;
+    border:none;
+    border-bottom: 3px solid @main-color;
+    color: @main-color;
+  }
+
+  input[type='text']:focus, input[type='password']:focus, input[type='email']:focus {
+    background-color:#fff;
+    outline:none;
+    font-size:18px;
+  }
+
+  a.back {
+    display:inline-block;
+    text-decoration:none;
+    width: 220px;
+    padding: 10px 0;
+    margin: 5px;
+    border:3px solid @main-color;
+    background-color:#fbfbfb;
+    color:@main-color;
+  }
+
+  button {
+    webkit-appearance:none;
+    display:inline-block;
+    width: 220px;
+    margin: 5px;
+    border:3px solid @main-color;
+    padding:10px 0px;
+    background-color:#fbfbfb;
+    color:@main-color;
+  }
+
+  a.back:hover, button:hover {
+    background-color: @main-color;
+    color:#fff;
+  }
+}
+
+header {
+  width: 100%;
+  margin: 0;
+  padding: 0px 0;
+  border-bottom: 1px solid #ccc;
+
+  #user {
+    float:right;
+    padding-top: 10px;
+
+    a#logout {
+      display:inline-block;
+      float:right;
+      padding-top: 15px;
+    }
+
+
+    #username {
+      display:inline-block;
+      float:right;
+      margin-right: 10px;
+      line-height: 0;
+    }
+  }
+
+  #header-content {
+    width: 80%;
+    margin: 0 auto;
+
+    #logo {
+      display:inline-block;
+      float:left;
+
+      img {
+        width: 170px;
+        height: auto;
+      }
+    }
+
+    #nav {
+      display:inline-block;
+      float:left;
+
+      ul {
+        list-style-type:none;
+        margin:15px 0 0 15px;
+        padding:0;
+
+        li {
+          display:inline-block;
+          margin-right:10px;
+          padding: 10px;
+
+          a {
+            text-decoration:none;
+            color: #555;
+          }
+
+          a:hover {
+            color:@main-color;
+          }
+        }
+      }
+    }
+  }
 }
 
 #container {
   width: 80%;
   margin: 0 auto;
-  padding-top:20px;
+  padding-top:0px;
   padding-bottom: 150px;
 
   button#addlesson {
     margin-bottom: 15px;
   }
+}
+
+#dash-title {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+
+  h3.dash-title {
+    padding:0;
+    font-weight: 600;
+  }
+}
+
+#btn-newcourse {
+  width: 100%;
+  text-align:center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+
+  button {
+    margin: 15px;
+    width: 250px;
+    padding: 10px;
+    border:none;
+    background-color: #fbfbfb;
+    color:@main-color;
+    border: 3px solid @main-color;
+    text-transform:uppercase;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background-color: @main-color;
+    border: 3px solid @main-color;
+    color: #fff;
+  }
+
+}
+
+#create-course-form {
+  padding-top: 20px;
+  background-color: @main-color;
+  padding-bottom: 25px;
+
+
+  form#newcourse {
+    width: 90%;
+    text-align:center;
+    margin: 0 auto;
+
+    input[type='text'] {
+      padding: 10px;
+      width: 75%;
+      margin: 10px auto;
+      display:block;
+      background-color: #fff;
+      border:none;
+    }
+
+    button {
+      margin-top:10px;
+      border: 3px solid #fff;
+      background:none;
+      color:#fff;
+      padding: 10px 20px;
+    }
+
+    button:hover {
+      background-color: #333;
+      border: 3px solid #333;
+      color: @main-color;
+    }
+  }
+
+}
+
+#title {
+  border-bottom: 1px solid #ccc;
+
+  // h2,p{
+  //   float:left;
+  // }
+
+  button {
+    float:right;
+  }
+
+  button {
+    margin-top:10px;
+    border: 3px solid @main-color;
+    background:none;
+    color:@main-color;
+    padding: 10px 20px;
+    margin-right:10px;
+  }
+
+  button:hover {
+    background-color: @main-color;
+    border: 3px solid @main-color;
+    color: #fff;
+  }
+}
+
+#lesson-list {
+  width: 75%;
+  margin: 0 auto;
+
+  .lesson {
+    display:block;
+    text-align:center;
+    width: 80%;
+    margin:0 auto;
+    background-color: #fbfbfb;
+    padding:10px;
+    color:#777;
+    border-bottom: 1px solid #ccc;
+  }
+
+  p.lessontitle {
+    font-weight:33;
+    font-size: 24px;
+    line-height: 10px;
+  }
+
+  p.lessondesc {
+    font-weight:normal;
+    font-size: 14px;
+  }
+}
+
+#courses {
+  padding-bottom: 100px;
+  text-align:center;
+
+  p {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  p.desc {
+    font-size: 14px;
+    margin: 3px;
+  }
+
+  .course {
+    display:inline-block;
+    //float:left;
+
+    h2 {
+      margin: 5px;
+      padding: 0;
+    }
+
+    p {
+      margin:0;
+      font-size: 14px;
+    }
+
+    a.showcourse {
+      box-sizing:border-box;
+      text-decoration:none;
+      display:inline-block;
+      width: 300px;
+      color: #777;
+      border: 3px solid #ccc;
+      text-align:center;
+      height: 250px;
+      padding: 80px 20px 0 20px;
+      margin: 0 10px 10px 0;
+
+      -webkit-transition: all 0s; /* For Safari 3.1 to 6.0 */
+      transition: all 0s;
+
+    }
+
+    a.showcourse:hover {
+      background-color: @main-color;
+      border: 3px solid @main-color;
+      color:#fff;
+      -webkit-transition: all 0s; /* For Safari 3.1 to 6.0 */
+      transition: all 0s;
+    }
+
+  }
+}
+
+h2.library-title {
+  text-align:center;
 }
 
 #lessons {
@@ -86,26 +446,79 @@ header {
 
 .lesson-builder {
   margin-bottom: 20px;
+
+  input {
+    padding: 10px 20px;
+    border:none;
+    display:block;
+    margin-bottom: 5px;
+    width:80%;
+  }
+
+  button {
+    display:block;
+    margin-top:10px;
+    border: 3px solid #fff;
+    background:@main-color;
+    color:#fff;
+    padding: 10px 20px;
+    margin-top: 15px;
+  }
+
+  button:hover {
+    background-color: #333;
+    border: 3px solid #333;
+    color: @main-color;
+  }
+}
+
+button#addquestion {
+  float:right;
+}
+
+form#test {
+  input {
+    background-color:#fff;
+    border:none;
+    border-bottom: 3px solid @main-color;
+    padding:10px;
+    margin: 5px;
+  }
+
+  p {
+    margin-bottom: 7px;
+    margin-top: 1px;
+  }
+
+  .question {
+    margin-bottom: 15px;
+  }
 }
 
 .quill-wrapper {
-  border:1px solid #ccc;
+  border:1px solid #fff;
   margin-top: 10px;
+  color:#fff;
 
   #full-toolbar {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid @main-color;
+    background-color:@main-color;
+    color:@main-color;
+  }
+
+  .sc-format-button {
+    color:#fff;
   }
 
   #full-editor {
     height: 300px;
+    background-color:#fff;
   }
 }
 
-#create-course-form {
-  height: 200px;
-  background-color: @main-color;
+p.question {
+  font-weight: 700;
 }
-
 
 
 
@@ -116,8 +529,8 @@ header {
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	width: 50%;
-	max-width: 630px;
+	width: 90%;
+	max-width: 700px;
 	min-width: 320px;
 	height: auto;
 	z-index: 2000;
@@ -144,8 +557,7 @@ header {
 	left: 0;
 	z-index: 1000;
 	opacity: 0;
-	background: @main-color;
-  opacity: 0.4;
+	background: rgba(255, 255, 255, 0.7);
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
@@ -204,9 +616,56 @@ header {
 
 .md-content button {
 	display: block;
-	margin: 0 auto;
+	margin: 10px auto;
 	font-size: 0.8em;
 }
+
+
+
+div.radio {
+  display:inline-block;
+  padding:10px;
+  margin:10px;
+
+  input[type="radio"] {
+     position:absolute;
+     opacity: 0;
+     -moz-opacity: 0;
+     -webkit-opacity: 0;
+     -o-opacity: 0;
+  }
+  input[type="radio"] + label {
+     position:relative;
+     padding: 3px 10px 0 25px;
+     color: #333;
+     font-size: 16px;
+     line-height: 24px;
+  }
+  input[type="radio"] + label:before {
+     content:"";
+     display:block;
+     position:absolute;
+     top:2px;
+     height: 20px;
+     width: 20px;
+     background: white;
+     border: 2px solid #ccc;
+     box-shadow: inset 0px 0px 0px 2px white;
+     -webkit-box-shadow: inset 0px 0px 0px 2px white;
+     -moz-box-shadow: inset 0px 0px 0px 2px white;
+     -o-box-shadow: inset 0px 0px 0px 2px white;
+     -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+     -o-border-radius: 50%;
+  }
+  input[type="radio"]:checked + label:before {
+     background: @main-color;
+  }
+
+
+}
+
+
 
 
 /* Individual modal styles with animations/transitions */
